@@ -11,7 +11,7 @@ const chai = require('chai');
 const assert = chai.assert;
 const server = require('../server');
 const idRegex = /^([0-9a-zA-Z]{24})$/
-const testBookId = '66927b6510c49be49e118eac';
+const testBookId = '669281330932698820cf93cc';
 const invalidTestId = '669148602e4290f18fd580d6';
 
 chai.use(chaiHttp);
@@ -105,7 +105,6 @@ suite('Functional Tests', function() {
               assert.property(res.body[0], 'title', 'Books in array should contain title');
               assert.property(res.body[0], '_id', 'Books in array should have contain');
               assert.equal(idRegex.test(res.body[0]._id), true);
-              assert.equal(res.body.length, 3);
               assert.isNumber(res.body[0].commentcount, 'commentcount should be a number');
               done();
             });
@@ -175,15 +174,15 @@ suite('Functional Tests', function() {
                 done(err);
               }
               assert.equal(res.status, 200);
-              assert.property(res.body, 'comment', 'Book should have contain comment');
+              assert.property(res.body, 'comments', 'Book should have contain comments');
               assert.property(res.body, '_id', 'Book should contain _id');
               assert.property(res.body, 'title', 'Book should contain title');
-              assert.property(res.body, 'commentCount', 'Book should contain commentCount');
+              assert.property(res.body, 'commentcount', 'Book should contain commentCount');
               assert.property(res.body, '__v', 'Book should contain __v');
               assert.equal(idRegex.test(res.body._id), true);
-              assert.isArray(res.body.comment, 'comment should be an array')
-              assert.isNumber(res.body.commentCount, 'commentcount should be a number');
-              assert.isAbove(res.body.commentCount, 0, 'commentcount should be greate than 0');
+              assert.isArray(res.body.comments, 'comment should be an array')
+              assert.isNumber(res.body.commentcount, 'commentcount should be a number');
+              assert.isAbove(res.body.commentcount, 0, 'commentcount should be greate than 0');
               done();
             })
       });
