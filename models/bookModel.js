@@ -55,10 +55,10 @@ const db = {
                 { new: true, useFindAndModify: false }
             );
             return { 
-                comment: updatedBook.comments, 
+                comments: updatedBook.comments, 
                 _id: updatedBook._id,  
                 title: updatedBook.title,
-                commentCount: updatedBook.commentCount,
+                commentcount: updatedBook.commentCount,
                 __v: updatedBook.__v
             }
          
